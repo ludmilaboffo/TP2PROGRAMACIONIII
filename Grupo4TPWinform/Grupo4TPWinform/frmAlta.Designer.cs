@@ -39,7 +39,7 @@
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.txtPrecio = new System.Windows.Forms.TextBox();
             this.cboMarca = new System.Windows.Forms.ComboBox();
-            this.cboBox = new System.Windows.Forms.ComboBox();
+            this.cboCategoria = new System.Windows.Forms.ComboBox();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -128,25 +128,27 @@
             // 
             // cboMarca
             // 
+            this.cboMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMarca.FormattingEnabled = true;
             this.cboMarca.Location = new System.Drawing.Point(112, 209);
             this.cboMarca.Name = "cboMarca";
             this.cboMarca.Size = new System.Drawing.Size(272, 21);
             this.cboMarca.TabIndex = 16;
             // 
-            // cboBox
+            // cboCategoria
             // 
-            this.cboBox.FormattingEnabled = true;
-            this.cboBox.Location = new System.Drawing.Point(112, 247);
-            this.cboBox.Name = "cboBox";
-            this.cboBox.Size = new System.Drawing.Size(272, 21);
-            this.cboBox.TabIndex = 17;
+            this.cboCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCategoria.FormattingEnabled = true;
+            this.cboCategoria.Location = new System.Drawing.Point(112, 247);
+            this.cboCategoria.Name = "cboCategoria";
+            this.cboCategoria.Size = new System.Drawing.Size(272, 21);
+            this.cboCategoria.TabIndex = 17;
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(44, 433);
+            this.btnAceptar.Location = new System.Drawing.Point(98, 291);
             this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(105, 30);
+            this.btnAceptar.Size = new System.Drawing.Size(75, 30);
             this.btnAceptar.TabIndex = 18;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
@@ -154,9 +156,9 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(307, 433);
+            this.btnCancelar.Location = new System.Drawing.Point(300, 291);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(105, 30);
+            this.btnCancelar.Size = new System.Drawing.Size(84, 30);
             this.btnCancelar.TabIndex = 19;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -166,10 +168,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(465, 518);
+            this.ClientSize = new System.Drawing.Size(444, 387);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
-            this.Controls.Add(this.cboBox);
+            this.Controls.Add(this.cboCategoria);
             this.Controls.Add(this.cboMarca);
             this.Controls.Add(this.txtPrecio);
             this.Controls.Add(this.txtDescripcion);
@@ -184,6 +186,7 @@
             this.Name = "frmAlta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Alta de articulos";
+            this.Load += new System.EventHandler(this.frmAlta_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -202,7 +205,7 @@
         private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.ComboBox cboMarca;
-        private System.Windows.Forms.ComboBox cboBox;
+        private System.Windows.Forms.ComboBox cboCategoria;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
     }

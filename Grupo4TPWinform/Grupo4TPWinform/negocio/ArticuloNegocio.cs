@@ -23,7 +23,7 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("Select Codigo, Nombre, A.Descripcion, Precio, C.Descripcion CATEGORIA , M.Descripcion Marca From ARTICULOS A, CATEGORIAS C, MARCAS M Where C.Id = A.IdCategoria AND M.id = A.idMarca");
+                datos.setearConsulta("Select Codigo, Nombre, A.Descripcion, Precio, C.Descripcion CATEGORIA , M.Descripcion Marca, ImagenUrl IMAGEN  From ARTICULOS A, CATEGORIAS C, MARCAS M, IMAGENES I Where C.Id = A.IdCategoria AND M.id = A.idMarca AND I.IdArticulo = A.Id");
                 datos.ejecutarLectura();
 
 
@@ -60,28 +60,8 @@ namespace negocio
             }
         }
 
-        public void altaArticulo(Articulo nuevo)
-        {
-            AccesoDatos datos = new AccesoDatos();
 
-            try
-            {
-                datos.setearConsulta("Insert into ARTICULOS(Codigo, Nombre, Descripcion, Precio, idCategoria, idMarca) values ('"+ nuevo.Codigo + "', '" + nuevo.Nombre + "', '" + nuevo.Descripcion + "', '" + nuevo.Precio+"', @idCategoria, @idMarca)");
-                datos.setearParametro("@idCategoria", nuevo.Categoria.iDCategoria);
-                datos.setearParametro("@idMarca", nuevo.Marca.id);
-                datos.ejecutarAccion();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
-
-        }
-
+      
         public List<Articulo> filtar(string campo, string criterio, string filtro)
         {
             List<Articulo> listaArt = new List<Articulo>();
