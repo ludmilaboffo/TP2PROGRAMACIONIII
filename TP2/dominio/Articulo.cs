@@ -15,5 +15,6 @@ namespace dominio
         public Categoria Categoria { get; set; }
         public decimal Precio { get; set; }
 
+        public Imagen url { get; set; }
     }
 }

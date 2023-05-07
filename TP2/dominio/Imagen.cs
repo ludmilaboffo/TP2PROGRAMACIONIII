@@ -11,7 +11,7 @@ namespace dominio
         public string ImagenUrl { get; set; }
         public int idArticulo { get; set; }
 
-        public string Articulo { get; set;  }
+        public int idImagen { get; set; }
 
         public override string ToString()
         {

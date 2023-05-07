@@ -23,17 +23,15 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("Select Codigo, Nombre, A.Descripcion, Precio, C.Descripcion CATEGORIA , M.Descripcion Marca From ARTICULOS A, CATEGORIAS C, MARCAS M Where C.Id = A.IdCategoria AND M.id = A.idMarca");
+                datos.setearConsulta("Select Codigo, Nombre, A.Descripcion, Precio, C.Descripcion CATEGORIA , I.Id, IdArticulo, ImagenUrl Imagen, M.Descripcion Marca From ARTICULOS A, CATEGORIAS C, MARCAS M, IMAGENES I Where C.Id = A.IdCategoria AND M.id = A.idMarca AND idArticulo = A.id");
                 datos.ejecutarLectura();
 
 
                 while (datos.Lector.Read())
                 {
                     Articulo aux = new Articulo();
-
                     if (!(datos.Lector["Codigo"] is DBNull))
                          aux.Codigo = (string)datos.Lector["Codigo"];
-
                     if(!(datos.Lector["Nombre"] is DBNull))
                         aux.Nombre = (string)datos.Lector["Nombre"];
                     if(!(datos.Lector["Codigo"] is DBNull))
@@ -46,6 +44,10 @@ namespace negocio
                     if (!(datos.Lector["Marca"] is DBNull))
                         aux.Marca = new Marca();
                         aux.Marca.Descripcion = (string)datos.Lector["Marca"];
+                    if (!(datos.Lector["Imagen"] is DBNull))
+                        aux.url = new Imagen();
+                        aux.url.ImagenUrl = (string)datos.Lector["Imagen"];
+
                     lista.Add(aux);
                 }
                 return lista;

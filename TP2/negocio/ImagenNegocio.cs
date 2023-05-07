@@ -26,8 +26,8 @@ namespace negocio
                 {
                     Imagen img = new Imagen();
                     img.idArticulo = (int)datos.Lector["IdArticulo"];
+                    img.idImagen = (int)datos.Lector["id"];
                     img.ImagenUrl = (string)datos.Lector["ImagenUrl"];
-
                     listaImg.Add(img);
                 }
                 return listaImg;
