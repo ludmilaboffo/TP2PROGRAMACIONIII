@@ -77,5 +77,25 @@ namespace Grupo4TPWinform
             cargar();
         }
 
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+               Articulo seleccionado;
+                try
+                {
+                    DialogResult respuesta = MessageBox.Show("Está por eliminar un registro de la base de datos. ¿Quiere seguir adelante?", "Proceso de eliminación...", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (respuesta == DialogResult.Yes)
+                    {
+                        seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                        negocio.eliminarArticulo(seleccionado.idArt);
+                        cargar();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            
+        }
     }
 }
