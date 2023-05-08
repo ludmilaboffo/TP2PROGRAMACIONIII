@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using dominio;
@@ -14,8 +15,8 @@ namespace negocio
         public List<Imagen> listarImagenes()
         {
 
-                List<Imagen> listaImg = new List<Imagen>();
-                AccesoDatos datos = new AccesoDatos();
+            List<Imagen> listaImg = new List<Imagen>();
+            AccesoDatos datos = new AccesoDatos();
             try
             {
 
@@ -47,5 +48,25 @@ namespace negocio
 
         }
 
+
+
+        public void altaImagen( Imagen img)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("Insert into IMAGENES (IdArticulo, ImagenUrl) values ( " + img.idArticulo + ",'" + img.ImagenUrl + "')");
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }

@@ -42,6 +42,8 @@ namespace Grupo4TPWinform
         {
          //   Articulo art = new Articulo();
               ArticuloNegocio negocio = new ArticuloNegocio();
+              ImagenNegocio imgNeg = new ImagenNegocio();  
+              Imagen img = new Imagen();
             try
             {
                 if(articulo == null)                
@@ -53,27 +55,56 @@ namespace Grupo4TPWinform
                 articulo.Descripcion = txtDescripcion.Text;               
                 articulo.Precio = decimal.Parse(txtPrecio.Text);
                 articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
-                articulo.Marca = (Marca)cboMarca.SelectedItem;                
+                articulo.Marca = (Marca)cboMarca.SelectedItem;
+
+        
 
                 if(articulo.idArt != 0)
                 {
-                    negocio.modificarArticulo(articulo);
+                    negocio.modificarArticulo(articulo);   
                     MessageBox.Show("Modificado exitosamente.");
                 }
                 else
                 {
-                     negocio.altaArticulo(articulo);
-                     MessageBox.Show("Agregado exitosamente.");
+                    negocio.altaArticulo(articulo);             
+                    int idArticulo = obtenerID(articulo); 
+                    img.idArticulo = idArticulo;
+                    img.ImagenUrl = txtURL.Text;
+                    imgNeg.altaImagen(img);
+                    MessageBox.Show("Carga exitosa");                  
                 }
-                if(archivo!=null)
-                    File.Copy(archivo.FileName, ConfigurationManager.AppSettings["Images-folder"] + archivo.SafeFileName);
-                
                 Close();
+
+                if (archivo!=null)
+                    File.Copy(archivo.FileName, ConfigurationManager.AppSettings["Images-folder"] + archivo.SafeFileName);      
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+
+        public int obtenerID(Articulo articulo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            int id;
+
+            try
+            {
+                datos.setearConsulta("SELECT @@IDENTITY AS IdArticulo");
+                id = Convert.ToInt32(datos.ejecutarEscalar());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+            return id;
         }
 
         private void frmAlta_Load(object sender, EventArgs e)
@@ -94,13 +125,11 @@ namespace Grupo4TPWinform
                 {
                     txtCodigo.Text= articulo.Codigo;
                     txtNombre.Text = articulo.Nombre;
-                    txtDescripcion.Text = articulo.Descripcion;
-                    //txtImagen.Text = articulo.url.ToString();
+                    txtDescripcion.Text = articulo.Descripcion;                 
                     txtPrecio.Text = articulo.Precio.ToString();
                     cboCategoria.SelectedValue = articulo.Categoria.iDCategoria;
                     cboMarca.SelectedValue = articulo.Marca.id;
-                   // cargarImagen(articulo.url.ToString());
-
+                    txtURL.Text = articulo.url.ImagenUrl;
                 }
 
             }

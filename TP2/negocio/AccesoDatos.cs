@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 using System.Data.SqlClient; //para conectarse a la base de datos
 
 namespace negocio
@@ -58,6 +59,30 @@ namespace negocio
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+
+        public object ejecutarEscalar()
+        {
+            try
+            {
+                comando.Connection = conexion;
+                conexion.Open();
+
+                object devuelve = comando.ExecuteScalar(); //lo que va a leer y devolver de la DB
+
+                return devuelve;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (conexion.State == ConnectionState.Open)
+                {
+                    conexion.Close();
+                }
             }
         }
 
