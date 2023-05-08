@@ -23,13 +23,15 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("Select Codigo, Nombre, A.Descripcion, Precio, C.Descripcion CATEGORIA , I.Id, IdArticulo, ImagenUrl Imagen, M.Descripcion Marca From ARTICULOS A, CATEGORIAS C, MARCAS M, IMAGENES I Where C.Id = A.IdCategoria AND M.id = A.idMarca AND idArticulo = A.id");
+                datos.setearConsulta("Select A.Id, Codigo, Nombre, A.Descripcion, Precio, A.idCategoria, A.idMarca, C.Descripcion CATEGORIA , I.Id, IdArticulo, ImagenUrl Imagen, M.Descripcion Marca From ARTICULOS A, CATEGORIAS C, MARCAS M, IMAGENES I Where C.Id = A.IdCategoria AND M.id = A.idMarca AND idArticulo = A.id");
                 datos.ejecutarLectura();
 
 
                 while (datos.Lector.Read())
                 {
                     Articulo aux = new Articulo();
+                    if (!(datos.Lector["Id"] is DBNull))
+                        aux.idArt = (int)datos.Lector["Id"];
                     if (!(datos.Lector["Codigo"] is DBNull))
                          aux.Codigo = (string)datos.Lector["Codigo"];
                     if(!(datos.Lector["Nombre"] is DBNull))
@@ -41,9 +43,11 @@ namespace negocio
                     if (!(datos.Lector["CATEGORIA"] is DBNull))
                         aux.Categoria = new Categoria();
                         aux.Categoria.Descripcion = (string)datos.Lector["CATEGORIA"];
+                        aux.Categoria.iDCategoria = (int)datos.Lector["idCategoria"];
                     if (!(datos.Lector["Marca"] is DBNull))
                         aux.Marca = new Marca();
                         aux.Marca.Descripcion = (string)datos.Lector["Marca"];
+                        aux.Marca.id = (int)datos.Lector["idMarca"];
                     if (!(datos.Lector["Imagen"] is DBNull))
                         aux.url = new Imagen();
                         aux.url.ImagenUrl = (string)datos.Lector["Imagen"];
@@ -83,6 +87,34 @@ namespace negocio
             }
 
         }
+
+        public void modificarArticulo(Articulo articulo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("update Articulos set Codigo = @codigo, Nombre = @nombre, Descripcion = @descripcion, IdMarca = @idMarca, IdCategoria = @idCategoria, Precio = @precio  where Id = @id");
+                datos.setearParametro("@codigo",articulo.Codigo);
+                datos.setearParametro("@nombre",articulo.Nombre);
+                datos.setearParametro("@descripcion",articulo.Descripcion);
+                datos.setearParametro("@idMarca",articulo.Marca.id);
+                datos.setearParametro("@idCategoria",articulo.Categoria.iDCategoria);
+                datos.setearParametro("@precio",articulo.Precio);
+                datos.setearParametro("@id",articulo.idArt);
+
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
 
         public List<Articulo> filtar(string campo, string criterio, string filtro)
         {

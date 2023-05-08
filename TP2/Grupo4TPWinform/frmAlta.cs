@@ -14,10 +14,19 @@ namespace Grupo4TPWinform
 {
     public partial class frmAlta : Form
     {
+        private Articulo articulo = null;
         public frmAlta()
         {
             InitializeComponent();
         }
+
+        public frmAlta(Articulo articulo)
+        {
+            InitializeComponent();
+            this.articulo = articulo;
+            Text = "Modificar Articulo";
+        }
+
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -26,21 +35,32 @@ namespace Grupo4TPWinform
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            Articulo art = new Articulo();
-            ArticuloNegocio negocio = new ArticuloNegocio();
-
+         //   Articulo art = new Articulo();
+              ArticuloNegocio negocio = new ArticuloNegocio();
             try
             {
-                art.Codigo = txtCodigo.Text;
-                art.Nombre = txtNombre.Text;
-                art.Descripcion = txtDescripcion.Text;               
-                art.Precio = int.Parse(txtPrecio.Text);
-                art.Categoria = (Categoria)cboCategoria.SelectedItem;
-                art.Marca = (Marca)cboMarca.SelectedItem;
+                if(articulo == null)
+                {
+                    Articulo articulo = new Articulo();
+                }
+                articulo.Codigo = txtCodigo.Text;
+                articulo.Nombre = txtNombre.Text;
+                articulo.Descripcion = txtDescripcion.Text;               
+                articulo.Precio = int.Parse(txtPrecio.Text);
+                articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
+                articulo.Marca = (Marca)cboMarca.SelectedItem;
 
 
-                negocio.altaArticulo(art);
-                MessageBox.Show("Agregado exitosamente.");
+                if(articulo.idArt != 0)
+                {
+                    negocio.modificarArticulo(articulo);
+                    MessageBox.Show("Modificado exitosamente.");
+                }
+                else
+                {
+                     negocio.altaArticulo(articulo);
+                     MessageBox.Show("Agregado exitosamente.");
+                }
                 Close();
             }
             catch(Exception ex)
@@ -56,7 +76,25 @@ namespace Grupo4TPWinform
             try
             {
                 cboMarca.DataSource = marca.listarMarcas();
+                cboMarca.ValueMember = "id";
+                cboMarca.DisplayMember = "Descripcion";
+
                 cboCategoria.DataSource = negocio.listarCategorias();
+                cboCategoria.ValueMember = "idCategoria";
+                cboCategoria.DisplayMember = "Descripcion";
+
+                if (articulo != null)
+                {
+                    txtCodigo.Text= articulo.Codigo;
+                    txtNombre.Text = articulo.Nombre;
+                    txtDescripcion.Text = articulo.Descripcion;
+                    txtPrecio.Text = articulo.Precio.ToString();
+                    cboCategoria.SelectedValue = articulo.Categoria.iDCategoria;
+                    cboMarca.SelectedValue = articulo.Marca.id;
+                   // cargarImagen(articulo.url.ToString());
+
+                }
+
             }
             catch(Exception ex)
             {

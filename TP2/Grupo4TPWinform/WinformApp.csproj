@@ -70,12 +70,6 @@
     <Compile Include="frmListar.Designer.cs">
       <DependentUpon>frmListar.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmModificar.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmModificar.Designer.cs">
-      <DependentUpon>frmModificar.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,9 +89,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmListar.resx">
       <DependentUpon>frmListar.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmModificar.resx">
-      <DependentUpon>frmModificar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>

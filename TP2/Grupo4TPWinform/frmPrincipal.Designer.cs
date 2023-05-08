@@ -87,8 +87,7 @@ namespace Grupo4TPWinform
             this.modificarArticulosToolStripMenuItem.Name = "modificarArticulosToolStripMenuItem";
             this.modificarArticulosToolStripMenuItem.Size = new System.Drawing.Size(120, 20);
             this.modificarArticulosToolStripMenuItem.Text = "Modificar Articulos";
-            this.modificarArticulosToolStripMenuItem.Click += new System.EventHandler(this.modificarArticulosToolStripMenuItem_Click);
-            // 
+       // 
             // eliminarArticulosToolStripMenuItem
             // 
             this.eliminarArticulosToolStripMenuItem.Name = "eliminarArticulosToolStripMenuItem";

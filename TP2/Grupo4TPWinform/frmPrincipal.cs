@@ -34,17 +34,11 @@ namespace Grupo4TPWinform
             frmAlta ventanaAgregar = new frmAlta();
             ventanaAgregar.ShowDialog();
         }
-
-        private void modificarArticulosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmModificar ventanaModificar = new frmModificar();
-            ventanaModificar.Show();
-        }
-
         private void eliminarArticulosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmEliminar ventanaEliminar = new frmEliminar();
             ventanaEliminar.Show();
         }
+
     }
 }

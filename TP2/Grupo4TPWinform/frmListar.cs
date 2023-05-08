@@ -37,6 +37,7 @@ namespace Grupo4TPWinform
                 listaArt = negocio.listar();
                 dgvArticulos.DataSource = listaArt;
                 dgvArticulos.Columns["url"].Visible = false;
+                dgvArticulos.Columns["idArt"].Visible = false;
             }
             catch (Exception ex)
             {
@@ -71,7 +72,7 @@ namespace Grupo4TPWinform
         {
             Articulo seleccionado = new Articulo();
             seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-            frmAlta modificar = new frmAlta();
+            frmAlta modificar = new frmAlta(seleccionado);
             modificar.ShowDialog();
             cargar();
         }
