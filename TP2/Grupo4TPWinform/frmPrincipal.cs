@@ -40,5 +40,9 @@ namespace Grupo4TPWinform
             ventanaEliminar.Show();
         }
 
+        private void articulosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using dominio;
-using negocio;
 using System.IO;
 using System.Configuration;
 using static System.Net.Mime.MediaTypeNames;
+using dominio;
+using negocio;
 
 namespace Grupo4TPWinform
 {
@@ -42,8 +42,6 @@ namespace Grupo4TPWinform
         {
          //   Articulo art = new Articulo();
               ArticuloNegocio negocio = new ArticuloNegocio();
-              ImagenNegocio imgNeg = new ImagenNegocio();  
-              Imagen img = new Imagen();
             try
             {
                 if(articulo == null)                
@@ -56,7 +54,8 @@ namespace Grupo4TPWinform
                 articulo.Precio = decimal.Parse(txtPrecio.Text);
                 articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
                 articulo.Marca = (Marca)cboMarca.SelectedItem;
-
+                articulo.url = new Imagen();
+                articulo.url.ImagenUrl = txtURL.Text;
         
 
                 if(articulo.idArt != 0)
@@ -66,11 +65,7 @@ namespace Grupo4TPWinform
                 }
                 else
                 {
-                    negocio.altaArticulo(articulo);             
-                    int idArticulo = obtenerID(articulo); 
-                    img.idArticulo = idArticulo;
-                    img.ImagenUrl = txtURL.Text;
-                    imgNeg.altaImagen(img);
+                    negocio.altaArticulo(articulo);              
                     MessageBox.Show("Carga exitosa");                  
                 }
                 Close();
@@ -84,28 +79,6 @@ namespace Grupo4TPWinform
             }
         }
 
-
-        public int obtenerID(Articulo articulo)
-        {
-            AccesoDatos datos = new AccesoDatos();
-            int id;
-
-            try
-            {
-                datos.setearConsulta("SELECT @@IDENTITY AS IdArticulo");
-                id = Convert.ToInt32(datos.ejecutarEscalar());
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
-
-            return id;
-        }
 
         private void frmAlta_Load(object sender, EventArgs e)
         {
@@ -123,13 +96,14 @@ namespace Grupo4TPWinform
 
                 if (articulo != null)
                 {
-                    txtCodigo.Text= articulo.Codigo;
+                    txtCodigo.Text= articulo.Codigo.ToString();
                     txtNombre.Text = articulo.Nombre;
                     txtDescripcion.Text = articulo.Descripcion;                 
                     txtPrecio.Text = articulo.Precio.ToString();
                     cboCategoria.SelectedValue = articulo.Categoria.iDCategoria;
                     cboMarca.SelectedValue = articulo.Marca.id;
                     txtURL.Text = articulo.url.ImagenUrl;
+                    cargarImagen(articulo.url.ImagenUrl);
                 }
 
             }
@@ -138,6 +112,24 @@ namespace Grupo4TPWinform
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private void txtUrlImagen_Leave(object sender, EventArgs e)
+        {
+            cargarImagen(txtURL.Text);
+        }
+
+        private void cargarImagen(string imagen)
+        {
+            try
+            {
+                pbArt.Load(imagen);
+            }
+            catch (Exception)
+            {
+                pbArt.Load("https://static.vecteezy.com/system/resources/previews/004/141/669/original/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg");
+            }
+        }
+
         /*
             private void btnAgregarImg_Click(object sender, EventArgs e)
             {

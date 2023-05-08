@@ -62,27 +62,18 @@ namespace negocio
             }
         }
 
-        public object ejecutarEscalar()
+        public int ejecutarReturnQuery()
         {
+            comando.Connection = conexion;
             try
             {
-                comando.Connection = conexion;
                 conexion.Open();
-
-                object devuelve = comando.ExecuteScalar(); //lo que va a leer y devolver de la DB
-
-                return devuelve;
+                return Convert.ToInt32(comando.ExecuteScalar()); //Castea el valor retornado el cual es el id del ultimo articulo ingresado en la conexion
             }
             catch (Exception ex)
             {
+
                 throw ex;
-            }
-            finally
-            {
-                if (conexion.State == ConnectionState.Open)
-                {
-                    conexion.Close();
-                }
             }
         }
 

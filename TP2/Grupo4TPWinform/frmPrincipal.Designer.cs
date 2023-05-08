@@ -60,6 +60,7 @@ namespace Grupo4TPWinform
             this.articulosToolStripMenuItem.Name = "articulosToolStripMenuItem";
             this.articulosToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.articulosToolStripMenuItem.Text = "Articulos";
+            this.articulosToolStripMenuItem.Click += new System.EventHandler(this.articulosToolStripMenuItem_Click);
             // 
             // listarToolStripMenuItem
             // 
@@ -87,7 +88,7 @@ namespace Grupo4TPWinform
             this.modificarArticulosToolStripMenuItem.Name = "modificarArticulosToolStripMenuItem";
             this.modificarArticulosToolStripMenuItem.Size = new System.Drawing.Size(120, 20);
             this.modificarArticulosToolStripMenuItem.Text = "Modificar Articulos";
-       // 
+            // 
             // eliminarArticulosToolStripMenuItem
             // 
             this.eliminarArticulosToolStripMenuItem.Name = "eliminarArticulosToolStripMenuItem";
@@ -99,8 +100,10 @@ namespace Grupo4TPWinform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(610, 271);
             this.Controls.Add(this.menuStrip1);
+            this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

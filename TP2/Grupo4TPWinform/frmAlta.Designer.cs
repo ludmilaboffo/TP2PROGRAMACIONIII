@@ -44,6 +44,8 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.txtURL = new System.Windows.Forms.TextBox();
             this.lbImagen = new System.Windows.Forms.Label();
+            this.pbArt = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbArt)).BeginInit();
             this.SuspendLayout();
             // 
             // lbCodigoAlta
@@ -182,11 +184,20 @@
             this.lbImagen.TabIndex = 17;
             this.lbImagen.Text = "Imagen URL";
             // 
+            // pbArt
+            // 
+            this.pbArt.Location = new System.Drawing.Point(430, 74);
+            this.pbArt.Name = "pbArt";
+            this.pbArt.Size = new System.Drawing.Size(227, 195);
+            this.pbArt.TabIndex = 19;
+            this.pbArt.TabStop = false;
+            // 
             // frmAlta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(691, 387);
+            this.Controls.Add(this.pbArt);
             this.Controls.Add(this.txtURL);
             this.Controls.Add(this.lbImagen);
             this.Controls.Add(this.btnCancelar);
@@ -207,6 +218,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Alta de articulos";
             this.Load += new System.EventHandler(this.frmAlta_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pbArt)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -230,5 +242,6 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.TextBox txtURL;
         private System.Windows.Forms.Label lbImagen;
+        private System.Windows.Forms.PictureBox pbArt;
     }
 }

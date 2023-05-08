@@ -47,11 +47,11 @@ namespace Grupo4TPWinform
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
         {
             Articulo seleccionado = new Articulo();
-            
+
             if (dgvArticulos.CurrentRow != null)
             {
                 seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-                cargarImagen(seleccionado.url.ToString());                               
+                cargarImagen(seleccionado.url.ToString());
             }
         }
         private void cargarImagen(string imagen)

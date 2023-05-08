@@ -38,6 +38,7 @@ namespace Grupo4TPWinform
             {
                 listaArticulos = negocio.listar();
                 dgvListarBusqueda.DataSource = listaArticulos;
+                dgvListarBusqueda.Columns["idArt"].Visible = false;
                 //cargarImagen(listaArticulo[0].UrlImagen);
             }
             catch (Exception ex)
