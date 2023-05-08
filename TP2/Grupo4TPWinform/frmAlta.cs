@@ -112,12 +112,6 @@ namespace Grupo4TPWinform
                 MessageBox.Show(ex.ToString());
             }
         }
-
-        private void txtUrlImagen_Leave(object sender, EventArgs e)
-        {
-            cargarImagen(txtURL.Text);
-        }
-
         private void cargarImagen(string imagen)
         {
             try
@@ -130,22 +124,23 @@ namespace Grupo4TPWinform
             }
         }
 
-        /*
-            private void btnAgregarImg_Click(object sender, EventArgs e)
-            {
+        private void btnAgregarImg_Click(object sender, EventArgs e)
+        {
                 OpenFileDialog archivo = new OpenFileDialog();
                 archivo.Filter = "jpg|*.jpg;|png|*.png";
                 if (archivo.ShowDialog() == DialogResult.OK )
                 {
-                    txtImagen.Text = archivo.FileName;
+                    txtURL.Text = archivo.FileName;
                     cargarImagen(archivo.FileName);
                 }
             }
 
-            private void txtImagen_Leave(object sender, EventArgs e)
-            {
-                cargarImagen(txtImagen.Text);
-            }
-        */
+        private void txtURL_Leave(object sender, EventArgs e)
+        {
+
+            cargarImagen(txtURL.Text);
+        }
     }
-}
+
+
+    }

@@ -17,32 +17,18 @@ namespace Grupo4TPWinform
             InitializeComponent();
         }
 
-        private void listarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmListar ventanaListar = new frmListar();
-            ventanaListar.Show();
-        }
 
-        private void buscarToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void tsmBuscar_Click(object sender, EventArgs e)
         {
             frmBuscar ventanaBuscar = new frmBuscar();
-            ventanaBuscar.Show();
+            ventanaBuscar.ShowDialog();
         }
 
-        private void agregarArticulosToolStripMenuItem_Click(object sender, EventArgs e)
+        private void tsmListarArts_Click(object sender, EventArgs e)
         {
-            frmAlta ventanaAgregar = new frmAlta();
-            ventanaAgregar.ShowDialog();
-        }
-        private void eliminarArticulosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmEliminar ventanaEliminar = new frmEliminar();
-            ventanaEliminar.Show();
-        }
-
-        private void articulosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
+            frmListar ventanaListar = new frmListar();
+            ventanaListar.ShowDialog();
         }
     }
 }

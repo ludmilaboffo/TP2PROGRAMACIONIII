@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using dominio;
 using negocio;
 using System.Data.SqlClient;
-
+using System.Security.AccessControl;
 
 namespace Grupo4TPWinform
 {
@@ -71,11 +71,56 @@ namespace Grupo4TPWinform
 
         }
 
+        private bool validarFiltro()
+        {
+            if(cboCampo.SelectedIndex < 0) // (funciona como vector y se cuenta desde cero)
+            {
+                MessageBox.Show("Por favor seleccione el campo a filtrar.");
+                return true;
+            }
+            if(cboCriterio.SelectedIndex < 0)
+            {
+                MessageBox.Show("Por favor seleccione el criterio.");
+                return true;
+            }
+            if (cboCampo.SelectedItem.ToString() == "Precio")
+            {
+                if (string.IsNullOrEmpty(txtFiltroAvanzado.Text))
+                {
+                    MessageBox.Show("No se puede buscar sin cargar datos al filtro primero.");
+                    return true;
+                }
+
+                if (!(soloLetras(txtFiltroAvanzado.Text)))
+                {
+                    MessageBox.Show("El ingreso solo permite datos numericos.");
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private bool soloLetras(string validarCadena)
+        {
+
+            foreach(char caracter in validarCadena)
+            {
+                if (!(char.IsNumber(caracter)) || !(char.IsSymbol(caracter)))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         private void btnFiltro_Click(object sender, EventArgs e)
         {
             ArticuloNegocio art = new ArticuloNegocio();
             try
             {
+                if (validarFiltro())
+                    return; // me corta la ejecucion del evento
+
                 string campo = cboCampo.SelectedItem.ToString();
                 string criterio = cboCriterio.SelectedItem.ToString();
                 string filtro = txtFiltroAvanzado.Text;
