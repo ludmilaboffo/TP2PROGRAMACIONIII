@@ -51,9 +51,7 @@ namespace Grupo4TPWinform
             if (dgvArticulos.CurrentRow != null)
             {
                 seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-                cargarImagen(seleccionado.url.ToString());
-                
-                
+                cargarImagen(seleccionado.url.ToString());                               
             }
         }
         private void cargarImagen(string imagen)
@@ -96,6 +94,13 @@ namespace Grupo4TPWinform
                     MessageBox.Show(ex.ToString());
                 }
             
+        }
+
+        private void btnAlta_Click(object sender, EventArgs e)
+        {
+            frmAlta alta = new frmAlta();
+            alta.ShowDialog();
+            cargar();
         }
     }
 }

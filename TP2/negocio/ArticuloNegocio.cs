@@ -23,7 +23,8 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("Select A.Id, Codigo, Nombre, A.Descripcion, Precio, A.idCategoria, A.idMarca, C.Descripcion CATEGORIA , I.Id, IdArticulo, ImagenUrl Imagen, M.Descripcion Marca From ARTICULOS A, CATEGORIAS C, MARCAS M, IMAGENES I Where C.Id = A.IdCategoria AND M.id = A.idMarca AND idArticulo = A.id");
+                // datos.setearConsulta("Select A.Id, Codigo, Nombre, A.Descripcion, Precio, A.idCategoria, A.idMarca, C.Descripcion CATEGORIA , I.Id, IdArticulo, ImagenUrl Imagen, M.Descripcion Marca From ARTICULOS A, CATEGORIAS C, MARCAS M, IMAGENES I Where C.Id = A.IdCategoria AND M.id = A.idMarca AND idArticulo = A.id");
+                datos.setearConsulta("Select A.Id, Codigo, Nombre, A.Descripcion, Precio, A.idCategoria, A.idMarca, C.Descripcion CATEGORIA, M.Descripcion Marca From ARTICULOS A, CATEGORIAS C, MARCAS M, Where C.Id = A.IdCategoria AND M.id = A.idMarca");
                 datos.ejecutarLectura();
 
 
@@ -48,9 +49,9 @@ namespace negocio
                         aux.Marca = new Marca();
                         aux.Marca.Descripcion = (string)datos.Lector["Marca"];
                         aux.Marca.id = (int)datos.Lector["idMarca"];
-                    if (!(datos.Lector["Imagen"] is DBNull))
-                        aux.url = new Imagen();
-                        aux.url.ImagenUrl = (string)datos.Lector["Imagen"];
+                 //   if (!(datos.Lector["Imagen"] is DBNull))
+                   //     aux.url = new Imagen();
+                     //   aux.url.ImagenUrl = (string)datos.Lector["Imagen"];
 
                     lista.Add(aux);
                 }
@@ -73,8 +74,10 @@ namespace negocio
             try
             {
                 datos.setearConsulta("Insert into ARTICULOS(Codigo, Nombre, Descripcion, Precio, idCategoria, idMarca) values ('"+ nuevo.Codigo + "', '" + nuevo.Nombre + "', '" + nuevo.Descripcion + "', '" + nuevo.Precio+"', @idCategoria, @idMarca)");
+           //     datos.setearConsulta("Insert into IMAGENES(IdArticulo, ImagenUrl) values (@idArticuloImagen,"+ "'@urlImagen'");
                 datos.setearParametro("@idCategoria", nuevo.Categoria.iDCategoria);
                 datos.setearParametro("@idMarca", nuevo.Marca.id);
+       
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -122,7 +125,7 @@ namespace negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                string consulta = "Select Codigo, Nombre, A.Descripcion, Precio, C.Descripcion CATEGORIA, M.Descripcion Marca, ImagenUrl IMAGEN From ARTICULOS A, CATEGORIAS C, MARCAS M, IMAGENES I Where C.Id = A.IdCategoria AND M.id = A.idMarca AND I.IdArticulo = A.Id AND ";
+                string consulta = "Select A.id, Codigo, Nombre, A.Descripcion, Precio, C.Descripcion CATEGORIA, M.Descripcion Marca, ImagenUrl IMAGEN From ARTICULOS A, CATEGORIAS C, MARCAS M, IMAGENES I Where C.Id = A.IdCategoria AND M.id = A.idMarca AND I.IdArticulo = A.Id AND ";
 
                 if (campo == "Codigo")
                 {
@@ -192,7 +195,8 @@ namespace negocio
                 while (datos.Lector.Read())
                 {
                     Articulo aux = new Articulo();
-
+                    if (!(datos.Lector["Id"] is DBNull))
+                        aux.idArt = (int)datos.Lector["idArt"];
                     if (!(datos.Lector["Codigo"] is DBNull))
                         aux.Codigo = (string)datos.Lector["Codigo"];
                     if (!(datos.Lector["Nombre"] is DBNull))

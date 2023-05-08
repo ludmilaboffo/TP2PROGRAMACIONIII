@@ -9,12 +9,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using dominio;
 using negocio;
+using System.IO;
+using System.Configuration;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Grupo4TPWinform
 {
+
     public partial class frmAlta : Form
     {
         private Articulo articulo = null;
+        private OpenFileDialog archivo = null;
         public frmAlta()
         {
             InitializeComponent();
@@ -39,17 +44,16 @@ namespace Grupo4TPWinform
               ArticuloNegocio negocio = new ArticuloNegocio();
             try
             {
-                if(articulo == null)
-                {
-                    Articulo articulo = new Articulo();
-                }
+                if(articulo == null)                
+                articulo = new Articulo();
+                
+                
                 articulo.Codigo = txtCodigo.Text;
                 articulo.Nombre = txtNombre.Text;
                 articulo.Descripcion = txtDescripcion.Text;               
-                articulo.Precio = int.Parse(txtPrecio.Text);
+                articulo.Precio = decimal.Parse(txtPrecio.Text);
                 articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
-                articulo.Marca = (Marca)cboMarca.SelectedItem;
-
+                articulo.Marca = (Marca)cboMarca.SelectedItem;                
 
                 if(articulo.idArt != 0)
                 {
@@ -61,6 +65,9 @@ namespace Grupo4TPWinform
                      negocio.altaArticulo(articulo);
                      MessageBox.Show("Agregado exitosamente.");
                 }
+                if(archivo!=null)
+                    File.Copy(archivo.FileName, ConfigurationManager.AppSettings["Images-folder"] + archivo.SafeFileName);
+                
                 Close();
             }
             catch(Exception ex)
@@ -88,6 +95,7 @@ namespace Grupo4TPWinform
                     txtCodigo.Text= articulo.Codigo;
                     txtNombre.Text = articulo.Nombre;
                     txtDescripcion.Text = articulo.Descripcion;
+                    //txtImagen.Text = articulo.url.ToString();
                     txtPrecio.Text = articulo.Precio.ToString();
                     cboCategoria.SelectedValue = articulo.Categoria.iDCategoria;
                     cboMarca.SelectedValue = articulo.Marca.id;
@@ -101,5 +109,22 @@ namespace Grupo4TPWinform
                 MessageBox.Show(ex.ToString());
             }
         }
+        /*
+            private void btnAgregarImg_Click(object sender, EventArgs e)
+            {
+                OpenFileDialog archivo = new OpenFileDialog();
+                archivo.Filter = "jpg|*.jpg;|png|*.png";
+                if (archivo.ShowDialog() == DialogResult.OK )
+                {
+                    txtImagen.Text = archivo.FileName;
+                    cargarImagen(archivo.FileName);
+                }
+            }
+
+            private void txtImagen_Leave(object sender, EventArgs e)
+            {
+                cargarImagen(txtImagen.Text);
+            }
+        */
     }
 }

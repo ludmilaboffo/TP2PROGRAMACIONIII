@@ -66,6 +66,7 @@
             this.btnAlta.TabIndex = 3;
             this.btnAlta.Text = "Agregar";
             this.btnAlta.UseVisualStyleBackColor = true;
+            this.btnAlta.Click += new System.EventHandler(this.btnAlta_Click);
             // 
             // btnModificar
             // 
