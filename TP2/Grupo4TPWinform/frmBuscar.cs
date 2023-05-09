@@ -20,11 +20,12 @@ namespace Grupo4TPWinform
         public frmBuscar()
         {
             InitializeComponent();
+            Text = "Buscando articulos";
         }
 
         private void frmBuscar_Load(object sender, EventArgs e)
         {
-            cargar();
+          //  cargar();
             cboCampo.Items.Add("Codigo");
             cboCampo.Items.Add("Marca");
             cboCampo.Items.Add("Precio");
@@ -36,10 +37,11 @@ namespace Grupo4TPWinform
             ArticuloNegocio negocio = new ArticuloNegocio();
             try
             {
+
                 listaArticulos = negocio.listar();
                 dgvListarBusqueda.DataSource = listaArticulos;
                 dgvListarBusqueda.Columns["idArt"].Visible = false;
-                //cargarImagen(listaArticulo[0].UrlImagen);
+                dgvListarBusqueda.Columns["url"].Visible = false;
             }
             catch (Exception ex)
             {
@@ -73,42 +75,40 @@ namespace Grupo4TPWinform
 
         private bool validarFiltro()
         {
-            if(cboCampo.SelectedIndex < 0) // (funciona como vector y se cuenta desde cero)
+            if (cboCampo.SelectedIndex < 0)
             {
-                MessageBox.Show("Por favor seleccione el campo a filtrar.");
+                MessageBox.Show("Por favor, seleccione el campo para filtrar.");
                 return true;
             }
-            if(cboCriterio.SelectedIndex < 0)
+            if (cboCriterio.SelectedIndex < 0)
             {
-                MessageBox.Show("Por favor seleccione el criterio.");
+                MessageBox.Show("Por favor, seleccione el criterio para filtrar.");
                 return true;
             }
-            if (cboCampo.SelectedItem.ToString() == "Precio")
+            if (cboCampo.SelectedItem.ToString() == "Número")
             {
                 if (string.IsNullOrEmpty(txtFiltroAvanzado.Text))
                 {
                     MessageBox.Show("No se puede buscar sin cargar datos al filtro primero.");
                     return true;
                 }
-
-                if (!(soloLetras(txtFiltroAvanzado.Text)))
+                if (!(soloNumeros(txtFiltroAvanzado.Text)))
                 {
                     MessageBox.Show("El ingreso solo permite datos numericos.");
                     return true;
                 }
+
             }
+
             return false;
         }
 
-        private bool soloLetras(string validarCadena)
+        private bool soloNumeros(string cadena)
         {
-
-            foreach(char caracter in validarCadena)
+            foreach (char caracter in cadena)
             {
-                if (!(char.IsNumber(caracter)) || !(char.IsSymbol(caracter)))
-                {
+                if (!(char.IsNumber(caracter)))
                     return false;
-                }
             }
             return true;
         }
@@ -124,9 +124,10 @@ namespace Grupo4TPWinform
                 string campo = cboCampo.SelectedItem.ToString();
                 string criterio = cboCriterio.SelectedItem.ToString();
                 string filtro = txtFiltroAvanzado.Text;
-                dgvListarBusqueda.DataSource = art.filtar(campo,criterio, filtro);
-
-
+                listaArticulos = art.filtar(campo, criterio, filtro);
+                dgvListarBusqueda.DataSource = listaArticulos;
+                dgvListarBusqueda.Columns["idArt"].Visible = false;
+                dgvListarBusqueda.Columns["url"].Visible = false;
             }
             catch (Exception ex)
             {
@@ -137,6 +138,11 @@ namespace Grupo4TPWinform
         }
 
         private void dgvListarBusqueda_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvListarBusqueda_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
         }

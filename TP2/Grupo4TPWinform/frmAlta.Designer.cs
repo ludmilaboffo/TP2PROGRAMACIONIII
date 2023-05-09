@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAlta));
             this.lbCodigoAlta = new System.Windows.Forms.Label();
             this.lbNombreAlta = new System.Windows.Forms.Label();
             this.lbMarcaAlta = new System.Windows.Forms.Label();
@@ -52,54 +53,66 @@
             // lbCodigoAlta
             // 
             this.lbCodigoAlta.AutoSize = true;
-            this.lbCodigoAlta.Location = new System.Drawing.Point(41, 68);
+            this.lbCodigoAlta.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCodigoAlta.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.lbCodigoAlta.Location = new System.Drawing.Point(22, 66);
             this.lbCodigoAlta.Name = "lbCodigoAlta";
-            this.lbCodigoAlta.Size = new System.Drawing.Size(40, 13);
+            this.lbCodigoAlta.Size = new System.Drawing.Size(55, 13);
             this.lbCodigoAlta.TabIndex = 0;
             this.lbCodigoAlta.Text = "Codigo";
             // 
             // lbNombreAlta
             // 
             this.lbNombreAlta.AutoSize = true;
-            this.lbNombreAlta.Location = new System.Drawing.Point(38, 105);
+            this.lbNombreAlta.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNombreAlta.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.lbNombreAlta.Location = new System.Drawing.Point(19, 103);
             this.lbNombreAlta.Name = "lbNombreAlta";
-            this.lbNombreAlta.Size = new System.Drawing.Size(44, 13);
+            this.lbNombreAlta.Size = new System.Drawing.Size(60, 13);
             this.lbNombreAlta.TabIndex = 0;
             this.lbNombreAlta.Text = "Nombre";
             // 
             // lbMarcaAlta
             // 
             this.lbMarcaAlta.AutoSize = true;
-            this.lbMarcaAlta.Location = new System.Drawing.Point(39, 251);
+            this.lbMarcaAlta.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMarcaAlta.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.lbMarcaAlta.Location = new System.Drawing.Point(20, 249);
             this.lbMarcaAlta.Name = "lbMarcaAlta";
-            this.lbMarcaAlta.Size = new System.Drawing.Size(37, 13);
+            this.lbMarcaAlta.Size = new System.Drawing.Size(53, 13);
             this.lbMarcaAlta.TabIndex = 0;
             this.lbMarcaAlta.Text = "Marca";
             // 
             // lbDescripcionAlta
             // 
             this.lbDescripcionAlta.AutoSize = true;
-            this.lbDescripcionAlta.Location = new System.Drawing.Point(38, 142);
+            this.lbDescripcionAlta.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDescripcionAlta.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.lbDescripcionAlta.Location = new System.Drawing.Point(19, 140);
             this.lbDescripcionAlta.Name = "lbDescripcionAlta";
-            this.lbDescripcionAlta.Size = new System.Drawing.Size(63, 13);
+            this.lbDescripcionAlta.Size = new System.Drawing.Size(87, 13);
             this.lbDescripcionAlta.TabIndex = 1;
             this.lbDescripcionAlta.Text = "Descripcion";
             // 
             // lbPrecioAlta
             // 
             this.lbPrecioAlta.AutoSize = true;
-            this.lbPrecioAlta.Location = new System.Drawing.Point(41, 180);
+            this.lbPrecioAlta.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPrecioAlta.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.lbPrecioAlta.Location = new System.Drawing.Point(22, 178);
             this.lbPrecioAlta.Name = "lbPrecioAlta";
-            this.lbPrecioAlta.Size = new System.Drawing.Size(37, 13);
+            this.lbPrecioAlta.Size = new System.Drawing.Size(50, 13);
             this.lbPrecioAlta.TabIndex = 0;
             this.lbPrecioAlta.Text = "Precio";
             // 
             // lbCategoriaAlta
             // 
             this.lbCategoriaAlta.AutoSize = true;
-            this.lbCategoriaAlta.Location = new System.Drawing.Point(38, 287);
+            this.lbCategoriaAlta.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCategoriaAlta.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.lbCategoriaAlta.Location = new System.Drawing.Point(19, 285);
             this.lbCategoriaAlta.Name = "lbCategoriaAlta";
-            this.lbCategoriaAlta.Size = new System.Drawing.Size(52, 13);
+            this.lbCategoriaAlta.Size = new System.Drawing.Size(78, 13);
             this.lbCategoriaAlta.TabIndex = 0;
             this.lbCategoriaAlta.Text = "Categoria";
             // 
@@ -151,22 +164,26 @@
             // 
             // btnAceptar
             // 
+            this.btnAceptar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btnAceptar.ForeColor = System.Drawing.Color.Black;
             this.btnAceptar.Location = new System.Drawing.Point(98, 328);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 30);
             this.btnAceptar.TabIndex = 9;
             this.btnAceptar.Text = "Aceptar";
-            this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.UseVisualStyleBackColor = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // btnCancelar
             // 
+            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btnCancelar.ForeColor = System.Drawing.Color.Black;
             this.btnCancelar.Location = new System.Drawing.Point(300, 328);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(84, 30);
             this.btnCancelar.TabIndex = 10;
             this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // txtURL
@@ -180,9 +197,11 @@
             // lbImagen
             // 
             this.lbImagen.AutoSize = true;
-            this.lbImagen.Location = new System.Drawing.Point(41, 215);
+            this.lbImagen.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbImagen.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.lbImagen.Location = new System.Drawing.Point(22, 213);
             this.lbImagen.Name = "lbImagen";
-            this.lbImagen.Size = new System.Drawing.Size(67, 13);
+            this.lbImagen.Size = new System.Drawing.Size(85, 13);
             this.lbImagen.TabIndex = 0;
             this.lbImagen.Text = "Imagen URL";
             // 
@@ -197,18 +216,20 @@
             // 
             // btnAgregarImg
             // 
+            this.btnAgregarImg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.btnAgregarImg.Location = new System.Drawing.Point(390, 205);
             this.btnAgregarImg.Name = "btnAgregarImg";
             this.btnAgregarImg.Size = new System.Drawing.Size(34, 26);
             this.btnAgregarImg.TabIndex = 6;
             this.btnAgregarImg.Text = "→";
-            this.btnAgregarImg.UseVisualStyleBackColor = true;
+            this.btnAgregarImg.UseVisualStyleBackColor = false;
             this.btnAgregarImg.Click += new System.EventHandler(this.btnAgregarImg_Click);
             // 
             // frmAlta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Thistle;
             this.ClientSize = new System.Drawing.Size(695, 381);
             this.Controls.Add(this.btnAgregarImg);
             this.Controls.Add(this.pbArt);
@@ -228,9 +249,10 @@
             this.Controls.Add(this.lbMarcaAlta);
             this.Controls.Add(this.lbNombreAlta);
             this.Controls.Add(this.lbCodigoAlta);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAlta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "0";
+            this.Text = "Alta de articulo";
             this.Load += new System.EventHandler(this.frmAlta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbArt)).EndInit();
             this.ResumeLayout(false);

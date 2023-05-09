@@ -28,7 +28,7 @@ namespace Grupo4TPWinform
         private void tsmListarArts_Click(object sender, EventArgs e)
         {
             frmListar ventanaListar = new frmListar();
-            ventanaListar.ShowDialog();
+            ventanaListar.ShowDialog();;
         }
     }
 }
