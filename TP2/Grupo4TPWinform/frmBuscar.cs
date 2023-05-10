@@ -11,6 +11,7 @@ using dominio;
 using negocio;
 using System.Data.SqlClient;
 using System.Security.AccessControl;
+using System.Collections;
 
 namespace Grupo4TPWinform
 {
@@ -25,7 +26,8 @@ namespace Grupo4TPWinform
 
         private void frmBuscar_Load(object sender, EventArgs e)
         {
-          //  cargar();
+            cargar();
+            dgvListarBusqueda.DefaultCellStyle.ForeColor = Color.Black;
             cboCampo.Items.Add("Codigo");
             cboCampo.Items.Add("Marca");
             cboCampo.Items.Add("Precio");
@@ -39,6 +41,7 @@ namespace Grupo4TPWinform
             {
 
                 listaArticulos = negocio.listar();
+                dgvListarBusqueda.DataSource = null;
                 dgvListarBusqueda.DataSource = listaArticulos;
                 dgvListarBusqueda.Columns["idArt"].Visible = false;
                 dgvListarBusqueda.Columns["url"].Visible = false;
@@ -85,7 +88,7 @@ namespace Grupo4TPWinform
                 MessageBox.Show("Por favor, seleccione el criterio para filtrar.");
                 return true;
             }
-            if (cboCampo.SelectedItem.ToString() == "Número")
+            if (cboCampo.SelectedItem.ToString() == "Precio")
             {
                 if (string.IsNullOrEmpty(txtFiltroAvanzado.Text))
                 {
@@ -125,6 +128,8 @@ namespace Grupo4TPWinform
                 string criterio = cboCriterio.SelectedItem.ToString();
                 string filtro = txtFiltroAvanzado.Text;
                 listaArticulos = art.filtar(campo, criterio, filtro);
+                dgvListarBusqueda.Columns.Clear();
+                dgvListarBusqueda.AutoResizeColumns();
                 dgvListarBusqueda.DataSource = listaArticulos;
                 dgvListarBusqueda.Columns["idArt"].Visible = false;
                 dgvListarBusqueda.Columns["url"].Visible = false;
@@ -134,16 +139,6 @@ namespace Grupo4TPWinform
                 throw ex;
             }
 
-
-        }
-
-        private void dgvListarBusqueda_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void dgvListarBusqueda_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
 
         }
     }

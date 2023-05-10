@@ -24,7 +24,7 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("Select A.Id, Codigo, Nombre, A.Descripcion, Precio, A.idCategoria, A.idMarca, C.Descripcion CATEGORIA , I.Id, IdArticulo, ImagenUrl Imagen, M.Descripcion Marca From ARTICULOS A, CATEGORIAS C, MARCAS M, IMAGENES I Where C.Id = A.IdCategoria AND M.id = A.idMarca AND idArticulo = A.id");
+                datos.setearConsulta("Select A.Id, Codigo, Nombre, A.Descripcion, Precio, A.idCategoria, A.idMarca, C.Descripcion CATEGORIA , I.Id, IdArticulo, ImagenUrl Imagen, M.Descripcion Marca From ARTICULOS A, CATEGORIAS C, MARCAS M, IMAGENES I Where C.Id = A.IdCategoria AND M.id = A.idMarca ");
                 datos.ejecutarLectura();
 
 
@@ -144,7 +144,7 @@ namespace negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                string consulta = "Select A.id, Codigo, Nombre, A.Descripcion, Precio, C.Descripcion as CATEGORIA, M.Descripcion as Marca, ImagenUrl as IMAGEN From ARTICULOS A, CATEGORIAS C, MARCAS M, IMAGENES I Where A.IdMarca = M.Id AND  A.IdCategoria = C.Id AND ";
+                string consulta = "Select A.Id, Codigo, Nombre, A.Descripcion, Precio, C.Descripcion CATEGORIA, M.Descripcion Marca, ImagenUrl IMAGEN From ARTICULOS A, CATEGORIAS C, MARCAS M, IMAGENES I Where C.Id = A.IdCategoria AND M.id = A.idMarca AND I.IdArticulo = A.Id AND ";
 
                 if (campo == "Codigo")
                 {
@@ -182,7 +182,7 @@ namespace negocio
                     switch (criterio)
                     {
                         case "Comienza con":
-                            consulta += "C.Descripcion like '" + filtro + "%'";
+                            consulta += "C.DescripcioN like '" + filtro + "%' ";
                             break;
                         case "Termina con":
                             consulta += "C.Descripcion like '%" + filtro + "'";
@@ -197,10 +197,10 @@ namespace negocio
                     switch (criterio)
                     {
                         case "Mayor a":
-                            consulta += "Precio >" + filtro;
+                            consulta += "Precio > " + filtro;
                             break;
                         case "Menor a":
-                            consulta += "Precio <" + filtro;
+                            consulta += "Precio < " + filtro;
                             break;
                         default:
                             consulta += "Precio =" + filtro;
@@ -214,17 +214,18 @@ namespace negocio
                 while (datos.Lector.Read())
                 {
                     Articulo aux = new Articulo();
-                    aux.idArt = (int)datos.Lector["id"];
-                    aux.Codigo = (string)datos.Lector["Codigo"];
-                    aux.Nombre = (string)datos.Lector["Nombre"];       
-                    aux.Descripcion = (string)datos.Lector["Descripcion"];              
-                    aux.Precio = (decimal)datos.Lector["Precio"];         
-                    aux.Categoria = new Categoria();
-                    aux.Categoria.Descripcion = (string)datos.Lector["CATEGORIA"];        
-                    aux.Marca = new Marca();
-                    aux.Marca.Descripcion = (string)datos.Lector["Marca"];
-                    aux.url = new Imagen();
-                    aux.url.ImagenUrl = (string)datos.Lector["IMAGEN"];
+                        aux.idArt = (int)datos.Lector["Id"];
+                        aux.Codigo = (string)datos.Lector["Codigo"];
+                        aux.Nombre = (string)datos.Lector["Nombre"];        
+                        aux.Descripcion = (string)datos.Lector["Descripcion"];            
+                        aux.Precio = (decimal)datos.Lector["Precio"];                
+                        aux.Categoria = new Categoria();
+                        aux.Categoria.Descripcion = (string)datos.Lector["CATEGORIA"];
+                        aux.Marca = new Marca();
+                        aux.Marca.Descripcion = (string)datos.Lector["Marca"];
+                        aux.url = new Imagen();
+                        aux.url.ImagenUrl = (string)datos.Lector["IMAGEN"];
+
                     listaArt.Add(aux);
                 }
                 return listaArt;
@@ -234,7 +235,7 @@ namespace negocio
                 throw ex;
             }
         }
-        public void eliminarArticulo(int id)
+public void eliminarArticulo(int id)
   {
       try
       {

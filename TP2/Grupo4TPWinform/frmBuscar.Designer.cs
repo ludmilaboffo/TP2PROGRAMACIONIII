@@ -29,7 +29,6 @@ namespace Grupo4TPWinform
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gpbBuscar = new System.Windows.Forms.GroupBox();
             this.txtFiltroAvanzado = new System.Windows.Forms.TextBox();
             this.cboCriterio = new System.Windows.Forms.ComboBox();
@@ -147,22 +146,14 @@ namespace Grupo4TPWinform
             // 
             // dgvListarBusqueda
             // 
-            this.dgvListarBusqueda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.RosyBrown;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvListarBusqueda.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvListarBusqueda.Location = new System.Drawing.Point(33, 198);
+            this.dgvListarBusqueda.BackgroundColor = System.Drawing.SystemColors.ControlDark;
+            this.dgvListarBusqueda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvListarBusqueda.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvListarBusqueda.Location = new System.Drawing.Point(23, 216);
             this.dgvListarBusqueda.Name = "dgvListarBusqueda";
-            this.dgvListarBusqueda.RowTemplate.ReadOnly = true;
             this.dgvListarBusqueda.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListarBusqueda.Size = new System.Drawing.Size(538, 126);
-            this.dgvListarBusqueda.TabIndex = 1;
-            this.dgvListarBusqueda.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListarBusqueda_CellContentClick_1);
+            this.dgvListarBusqueda.Size = new System.Drawing.Size(533, 150);
+            this.dgvListarBusqueda.TabIndex = 3;
             // 
             // frmBuscar
             // 
@@ -170,8 +161,8 @@ namespace Grupo4TPWinform
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkMagenta;
             this.ClientSize = new System.Drawing.Size(732, 401);
-            this.Controls.Add(this.lblArticulosBuscados);
             this.Controls.Add(this.dgvListarBusqueda);
+            this.Controls.Add(this.lblArticulosBuscados);
             this.Controls.Add(this.gpbBuscar);
             this.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Name = "frmBuscar";

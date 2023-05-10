@@ -46,7 +46,6 @@
             this.txtURL = new System.Windows.Forms.TextBox();
             this.lbImagen = new System.Windows.Forms.Label();
             this.pbArt = new System.Windows.Forms.PictureBox();
-            this.btnAgregarImg = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbArt)).BeginInit();
             this.SuspendLayout();
             // 
@@ -214,24 +213,12 @@
             this.pbArt.TabIndex = 19;
             this.pbArt.TabStop = false;
             // 
-            // btnAgregarImg
-            // 
-            this.btnAgregarImg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.btnAgregarImg.Location = new System.Drawing.Point(390, 205);
-            this.btnAgregarImg.Name = "btnAgregarImg";
-            this.btnAgregarImg.Size = new System.Drawing.Size(34, 26);
-            this.btnAgregarImg.TabIndex = 6;
-            this.btnAgregarImg.Text = "→";
-            this.btnAgregarImg.UseVisualStyleBackColor = false;
-            this.btnAgregarImg.Click += new System.EventHandler(this.btnAgregarImg_Click);
-            // 
             // frmAlta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Thistle;
             this.ClientSize = new System.Drawing.Size(695, 381);
-            this.Controls.Add(this.btnAgregarImg);
             this.Controls.Add(this.pbArt);
             this.Controls.Add(this.txtURL);
             this.Controls.Add(this.lbImagen);
@@ -279,6 +266,5 @@
         private System.Windows.Forms.TextBox txtURL;
         private System.Windows.Forms.Label lbImagen;
         private System.Windows.Forms.PictureBox pbArt;
-        private System.Windows.Forms.Button btnAgregarImg;
     }
 }
